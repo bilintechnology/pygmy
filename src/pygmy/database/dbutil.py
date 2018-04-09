@@ -31,9 +31,9 @@ def __utcnow_default(element, compiler, **kw):
     return 'CURRENT_TIMESTAMP'
 
 
-# @compiles(utcnow, 'mysql')
-# def __utcnow_mysql(element, compiler, **kw):
-#     return 'UTC_TIMESTAMP()'
+@compiles(utcnow, 'mysql')
+def __utcnow_mysql(element, compiler, **kw):
+    return 'NOW()'
 
 
 @compiles(utcnow, 'postgresql')

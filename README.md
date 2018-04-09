@@ -134,7 +134,55 @@ Get All User Link:
 
 Create Link:
 
+    curl -XPOST http://127.0.0.1:9119/api/shorten -H 'Content-Type: application/json' -d '{
+    "long_url": "http://www.bilintechnology.com/",
+    "short_code": "custom code, optional",
+    "is_custom": "True/False, True if short_code is set, optional",
+    "description": "description, optional",
+    "secret_key": "custom secret key, optional",
+    "is_protected": "True/False, True if secret_key is set, optional",
+    "expire_after": "expire after N minutes, optional"
+    }'
+
+    Response:
+    {
+        "created_at": "04 Apr, 2018 09:03:49",
+        "description": null,
+        "expire_after": null,
+        "hits_counter": 0,
+        "id": "http://0.0.0.0:9119/api/link/7",
+        "is_custom": false,
+        "is_disabled": false,
+        "is_protected": false,
+        "long_url": "http://www.google.com/?q=123&loc=us&bilin.ext=abcd_u123t34567",
+        "owner": null,
+        "secret_key": "",
+        "short_code": "g",
+        "short_url": "http://biin.co",
+        "updated_at": "2018-04-04T09:04:10+00:00"
+    }
+
 Get Link:
+
+    curl -XGET -H 'secret_key: xxx' http://127.0.0.1:9119/api/unshorten?url={short_url}
+
+    Response:
+    {
+        "created_at": "04 Apr, 2018 08:39:04",
+        "description": null,
+        "expire_after": null,
+        "hits_counter": 2,
+        "id": "http://0.0.0.0:9119/api/link/6",
+        "is_custom": false,
+        "is_disabled": false,
+        "is_protected": false,
+        "long_url": "http://www.google.com/?q=123&loc=us&bilin.ext=abcd_u123t3456",
+        "owner": null,
+        "secret_key": "",
+        "short_code": "f",
+        "short_url": "http://biin.co",
+        "updated_at": "2018-04-04T08:39:23+00:00"
+    }
 
 Shell Usage
 ===========
